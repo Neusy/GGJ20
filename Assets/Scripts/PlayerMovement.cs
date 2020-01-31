@@ -41,7 +41,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnLanding() {
         animator.SetBool("Jumping", false);
-        footstep.Play();
+        if (footstep)
+            footstep.Play();
     }
 
     public void OnCrouching(bool isCrouching) {
@@ -50,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void STFootstep(int step) {
         // -1 Left, 1 Right
-        footstep.Play();
+        if (footstep)
+            footstep.Play();
     }
 }
