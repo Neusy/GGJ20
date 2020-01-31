@@ -6,8 +6,6 @@
 /Assets/AssetStoreTools*
 /[Pp]ackages/
 /[Pp]rojectSettings/
-/[Tt]emp/**/*
-/[Tt]emp/*
 
 # Visual Studio 2015 cache directory
 /.vs/
