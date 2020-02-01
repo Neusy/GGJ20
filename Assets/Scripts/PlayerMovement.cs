@@ -23,7 +23,9 @@ public class PlayerMovement : MonoBehaviour
             // Requested jump (no validation inside PM.cs)
             jump = true;
             animator.SetBool("Jumping", true);
-        } else if (Input.GetButton("Jump")) {
+        } else if (Input.GetButtonUp("Jump")) {
+            jump = false;
+        } else if (jump && (Input.GetButton("Jump"))) {
             // Jump button is still pressed
             jump = true;
         }
@@ -39,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
     {
         // Basic movement
         controller.Move(Time.fixedDeltaTime, horizontalMove, crouch, jump);
-        jump = false;
     }
 
     public void OnLanding() {
