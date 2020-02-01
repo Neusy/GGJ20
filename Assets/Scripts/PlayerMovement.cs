@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
             transform.position = spawn;
 
         if (Input.GetButtonDown("Eye")) {
-            inventory.use(EnumPickUpType.PickUpType.Eye);
+            inventory.use(EnumPickUpType.PickUpType.Eye); //bisogna inserirli come comandi
         }
         if (Input.GetButtonDown("Head")) {
             inventory.use(EnumPickUpType.PickUpType.Head);
