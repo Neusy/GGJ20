@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 
 public class ItemPart {
@@ -38,7 +39,6 @@ public abstract class Item {
 public abstract class PickUp : MonoBehaviour {
     //public Item ...; (?)
 
-
     protected abstract void onTriggerEnter2D(Collider2D other);  //_____________ GameObject.Item (?) .addPart() 
 
     protected void destroy(Collider2D other) {
@@ -75,6 +75,6 @@ public class Rampino : Item {
     }
 
     protected override void effect() {
-    
+        
     }
 }

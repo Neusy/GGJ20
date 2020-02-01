@@ -20,9 +20,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
+            // Requested jump (no validation inside PM.cs)
             jump = true;
             animator.SetBool("Jumping", true);
         } else if (Input.GetButton("Jump")) {
+            // Jump button is still pressed
             jump = true;
         }
         if (Input.GetButtonDown("Crouch")) {
@@ -50,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Crouching", isCrouching);
     }
 
+    // Sound callback to be triggered inside the animation
     public void STFootstep(int step) {
         // -1 Left, 1 Right
         if (footstep)
