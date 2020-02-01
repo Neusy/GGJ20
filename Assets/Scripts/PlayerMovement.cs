@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,6 +15,12 @@ public class PlayerMovement : MonoBehaviour
     int jump = 0;
     bool crouch = false;
     Vector3 spawn;
+    Inventory inventory;
+
+    void Awake()
+    {
+        inventory = GetComponent<Inventory>();
+    }
 
     void Update()
     {
@@ -63,5 +71,24 @@ public class PlayerMovement : MonoBehaviour
         // -1 Left, 1 Right
         if (footstep)
             footstep.Play();
+    }
+
+    void OnCollisionEnter2D(Collision2D coll) {
+        if (Regex.IsMatch(coll.gameObject.name, "^NPC[0-9]$")) {
+            // Convert decimal NPC numbers in binary item flags
+            uint item = (uint)Math.Pow(2, uint.Parse(coll.gameObject.name.Substring(3)) - 1);
+            if (inventory.CarryingItem(item)) {
+                inventory.UseItem(item);
+                coll.gameObject.GetComponent<NPCStatus>().OnRepair();
+            }
+        }
+/*        if (coll.gameObject.tag.Equals("Player")) {
+            OnPickUpEvent.Invoke(itemID);
+            Destroy(this.gameObject);
+        }
+        //GameObject e = Instantiate(<azione desiderata>) as GameObject;
+        //e.transform.position = transform.position;
+        //Destroy (other.gameObject);
+        //this.gameObject.SetActive(false);/**/
     }
 }

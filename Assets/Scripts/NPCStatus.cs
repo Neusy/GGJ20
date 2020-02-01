@@ -9,12 +9,13 @@ public class NPCStatus : MonoBehaviour {
     void FixedUpdate() {
         if (transform.position.y < -10) {
             dead = true;
-            Debug.Log("rip");
+            Debug.Log("#rip" + this.gameObject.name);
             this.gameObject.SetActive(false);
         }
     }
 
     public void OnRepair() {
+        Debug.Log("Repaired " + this.gameObject.name);
         repaired = true;
     }
 }
