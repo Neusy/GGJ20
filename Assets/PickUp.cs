@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public abstract class ItemPart {
-    bool collected = false;
+public class ItemPart {
+    public bool collected = false;
     //...
 }
 
 
 public abstract class Item {
-    private bool complete = false;
+    protected bool complete = false;
     public List<ItemPart> parts;
-    private void addPart() {
+    protected void addPart() {
         if (!complete) {
-            foreach (ItemParts part in parts) {
+            foreach (ItemPart part in parts) {
                 if (!part.collected) {
                     part.collected = true;
-                    if (part is parts[-1]) {
+                    if (Object.ReferenceEquals(part, parts[parts.Count])) {
                         complete = true;
                     }
                     break;
@@ -31,16 +31,17 @@ public abstract class Item {
             effect();
         }
     }
-    private abstract void effect();
+    protected abstract void effect();
 }
 
 
 public abstract class PickUp : MonoBehaviour {
     //public Item ...; (?)
 
-    private abstract void onTriggerEnter2D(Collider2D other);  //_____________ GameObject.Item (?) .addPart() 
 
-    private void destroy(Collider2D other) {
+    protected abstract void onTriggerEnter2D(Collider2D other);  //_____________ GameObject.Item (?) .addPart() 
+
+    protected void destroy(Collider2D other) {
         Destroy (other.gameObject);
         this.gameObject.SetActive(false);
     }
@@ -73,8 +74,7 @@ public class Rampino : Item {
         }
     }
 
-    @override
-    effect() {
-        
+    protected override void effect() {
+    
     }
 }
