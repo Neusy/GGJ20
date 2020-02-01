@@ -115,9 +115,9 @@ public class CharacterController2D : MonoBehaviour
 			// And then smoothing it out and applying it to the character
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
-			if (m_Rigidbody2D.velocity.y < 0) {
+			if (m_Rigidbody2D.velocity.y < 0.1f) {
 				m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * m_DownGravityMultiplier * dT;
-			} else if ((m_Rigidbody2D.velocity.y > 0) && (jump != 2)) {
+			} else if ((m_Rigidbody2D.velocity.y > 0.1f) && (jump != 2)) {
 				m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * m_LowJumpMultiplier * dT;
 			}
 			if (m_Grounded && (jump == 1))
