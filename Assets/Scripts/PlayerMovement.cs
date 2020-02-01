@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMove = 0f;
     int jump = 0;
     bool crouch = false;
+    Vector3 spawn;
 
     void Update()
     {
@@ -35,6 +36,9 @@ public class PlayerMovement : MonoBehaviour
         } else if (Input.GetButtonUp("Crouch")) {
             crouch = false;
         }
+
+        if (transform.position.y < -20)
+            transform.position = spawn;
     }
 
     void FixedUpdate()
@@ -44,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void OnLanding() {
+        spawn = transform.position;
         animator.SetBool("Jumping", false);
         if (footstep)
             footstep.Play();
