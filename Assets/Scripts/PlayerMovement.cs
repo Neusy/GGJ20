@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 20f;
 
     float horizontalMove = 0f;
-    bool jump = false;
+    int jump = 0;
     bool crouch = false;
 
     void Update()
@@ -20,8 +20,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            jump = true;
+            jump = 1;
             animator.SetBool("Jumping", true);
+        } else if (Input.GetButtonUp("Jump")) {
+            jump = 0;
+        } else if (Input.GetButton("Jump")) {
+            jump = 2;
         }
         if (Input.GetButtonDown("Crouch")) {
             crouch = true;
@@ -34,9 +38,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         // Basic movement
-        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-        if (jump)
-            jump = false;
+        controller.Move(Time.fixedDeltaTime, horizontalMove, crouch, jump);
     }
 
     public void OnLanding() {
