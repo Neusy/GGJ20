@@ -6,6 +6,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    public GameObject player;
+
+    /*public enum PickUpType : uint
+    {
+        Eye = 0,
+        Head = 1,
+        Leg = 2,
+        OS = 3
+    }*/
+
     public CharacterController2D controller;
     public Animator animator;
     public AudioSource footstep;
@@ -19,11 +30,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        inventory = GetComponent<Inventory>();
+        //inventory = GetComponent<Inventory>();
+        player = GameObject.Find("Player");
     }
 
     void Update()
     {
+        var inventory = player.GetComponent<Inventory2>();
+
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
@@ -44,6 +58,23 @@ public class PlayerMovement : MonoBehaviour
 
         if (transform.position.y < -20)
             transform.position = spawn;
+
+        if (Input.GetButtonDown("Eye")) {
+            inventory.use(EnumPickUpType.PickUpType.Eye);
+        }
+        if (Input.GetButtonDown("Head")) {
+            inventory.use(EnumPickUpType.PickUpType.Head);
+        }
+        if (Input.GetButtonDown("Leg")) {
+            inventory.use(EnumPickUpType.PickUpType.Leg);
+        }
+        if (Input.GetButtonDown("OS")) {
+            inventory.use(EnumPickUpType.PickUpType.OS);
+        }
+        if (Input.GetButtonDown("Give")) {
+            inventory.give();
+            // give dovrebbe funzionare in base alla distanza dal player da un npc al quale viene dato in automatico l'oggetto mancante
+        }
     }
 
     void FixedUpdate()
