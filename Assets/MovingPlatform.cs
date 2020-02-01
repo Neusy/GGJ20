@@ -14,15 +14,6 @@ public class MovingPlatform : MonoBehaviour {
         y = transform.position.y;
     }
 
-/*    public parameters(float _xSpeed, float _ySpeed, float _rightBorder, float _leftBorder, float _upperBorder, float _bottomBorder) {
-        xSpeed = _xSpeed;
-        ySpeed = _ySpeed;
-        rightBoundary = _rightBorder + transform.position.x;
-        leftBoundary = _leftBorder - transform.position.x;
-        upperBoundary = _upperBorder + transform.position.y;
-        bottomBo = _bottomBorder - transform.position.y;
-    }*/
-
     void Update () {
 
         if (transform.position.x > rightBoundary + x) 
