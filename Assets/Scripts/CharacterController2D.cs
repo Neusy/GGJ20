@@ -16,7 +16,7 @@ public class CharacterController2D : MonoBehaviour
 
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
-	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
+	const float k_CeilingRadius = .2f; 	// Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
@@ -63,7 +63,7 @@ public class CharacterController2D : MonoBehaviour
 	}
 
 
-	public void Move(float dT, float move, bool crouch, int jump)
+	public void Move(float dT, float move, bool crouch, bool jump)
 	{
 		if (move != 0)
 			move *= dT;
@@ -115,12 +115,12 @@ public class CharacterController2D : MonoBehaviour
 			// And then smoothing it out and applying it to the character
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
-			if (m_Rigidbody2D.velocity.y < 0.1f) {
+			if (m_Rigidbody2D.velocity.y < 0) {
 				m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * m_DownGravityMultiplier * dT;
-			} else if ((m_Rigidbody2D.velocity.y > 0.1f) && (jump != 2)) {
+			} else if ((m_Rigidbody2D.velocity.y > 0) && !jump) {
 				m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * m_LowJumpMultiplier * dT;
 			}
-			if (m_Grounded && (jump == 1))
+			if (m_Grounded && jump)
 				m_Rigidbody2D.velocity = Vector2.up * m_JumpForce;
 
 			// If the input is moving the player right and the player is facing left
