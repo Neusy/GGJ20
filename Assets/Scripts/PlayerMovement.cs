@@ -34,9 +34,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Jumping", true);
         } else if (Input.GetButtonUp("Jump")) {
             jump = 0;
-        } else if ((jump > 0) && (Input.GetButton("Jump"))) {
-            // Jump button is still pressed
-            jump = 2;
         }
         if (Input.GetButtonDown("Crouch")) {
             crouch = true;
@@ -53,6 +50,10 @@ public class PlayerMovement : MonoBehaviour
     {
         // Basic movement
         controller.Move(Time.fixedDeltaTime, horizontalMove, crouch, jump);
+        if ((jump > 0) && (Input.GetButton("Jump"))) {
+            // Jump button is still pressed
+            jump = 2;
+        }
     }
 
     public void OnLanding() {
