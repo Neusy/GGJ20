@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 20f;
 
     float horizontalMove = 0f;
-    bool jump = false;
+    int jump = 0;
     bool crouch = false;
 
     void Update()
@@ -18,16 +18,16 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if (Input.GetButtonDown("Jump"))
+        if ((jump == 0) && Input.GetButtonDown("Jump"))
         {
             // Requested jump (no validation inside PM.cs)
-            jump = true;
+            jump = 1;
             animator.SetBool("Jumping", true);
         } else if (Input.GetButtonUp("Jump")) {
-            jump = false;
-        } else if (jump && (Input.GetButton("Jump"))) {
+            jump = 0;
+        } else if ((jump > 0) && (Input.GetButton("Jump"))) {
             // Jump button is still pressed
-            jump = true;
+            jump = 2;
         }
         if (Input.GetButtonDown("Crouch")) {
             crouch = true;

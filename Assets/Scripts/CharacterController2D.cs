@@ -61,7 +61,7 @@ public class CharacterController2D : MonoBehaviour
     }
 
 
-    public void Move(float dT, float move, bool crouch, bool jump)
+    public void Move(float dT, float move, bool crouch, int jump)
     {
         move *= 10 * dT;
 
@@ -112,12 +112,12 @@ public class CharacterController2D : MonoBehaviour
             // dynamically, based on user input
             if (m_Rigidbody2D.velocity.y < 0) {
                 m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * m_DownGravityMultiplier * dT;
-            } else if ((m_Rigidbody2D.velocity.y > 0) && !jump) {
+            } else if ((m_Rigidbody2D.velocity.y > 0) && (jump == 0)) {
                 m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * m_LowJumpMultiplier * dT;
             }
 
             // Take off
-            if (m_Grounded && jump)
+            if (m_Grounded && (jump == 1))
                 m_Rigidbody2D.velocity = Vector2.up * m_JumpForce;
 
             // If the input is moving the player right and the player is facing left
