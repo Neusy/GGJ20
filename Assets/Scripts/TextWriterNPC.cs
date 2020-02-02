@@ -53,7 +53,7 @@ public class TextWriterNPC : MonoBehaviour
         if (status != null) {
             if ((onEvent == false) && (status.isRepaied() == true))
             {
-                AnimateDialogueBox(textEvent);
+                AnimateDialogueBox(textEventRepaired);
                 onEvent = true;
             }
         }
