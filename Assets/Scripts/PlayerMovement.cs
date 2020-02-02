@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     bool crouch = false;
     Vector3 spawn;
     Inventory inventory;
+    EnumPickUpType.PickUpType repairObject = EnumPickUpType.PickUpType.NULL;
+    GameObject collidedNPCReference = null;
 
     void Awake()
     {
@@ -36,7 +38,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        var inventory = player.GetComponent<Inventory2>();
+        //colliding = false;
+        //repairObject =  EnumPickUpType.PickUpType.NULL;
+        if(collidedNPCReference) updateCollision();
+        
+        inventory = player.GetComponent<Inventory2>();
 
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -71,9 +77,13 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("OS")) {
             inventory.use(EnumPickUpType.PickUpType.OS);
         }
-        if (Input.GetButtonDown("Give")) {
-            inventory.give();
-            // give dovrebbe funzionare in base alla distanza dal player da un npc al quale viene dato in automatico l'oggetto mancante
+        if (Input.GetButtonDown("Repair")) {
+            if (collidedNPCReference) {
+                inventory.repair(npcItemMatch(collidedNPCReference.name));
+                Debug.Log("repairing " + repairObject);
+            }
+            Debug.Log("can't repair " + repairObject);
+            // repair dovrebbe funzionare in base alla distanza dal player da un npc al quale viene dato in automatico l'oggetto mancante
         }
     }
 
@@ -108,11 +118,15 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D coll) {
         if (Regex.IsMatch(coll.gameObject.name, "^NPC[0-9]$")) {
             // Convert decimal NPC numbers in binary item flags
-            uint item = (uint)Math.Pow(2, uint.Parse(coll.gameObject.name.Substring(3)) - 1);
+            /*uint item = (uint)Math.Pow(2, uint.Parse(coll.gameObject.name.Substring(3)) - 1);
             if (inventory.CarryingItem(item)) {
                 inventory.UseItem(item);
                 coll.gameObject.GetComponent<NPCStatus>().OnRepair();
-            }
+            }*/
+            //int item = int.Parse(coll.gameObject.name.Substring(3)) - 1;
+            repairObject = npcItemMatch(coll.gameObject.name);
+            collidedNPCReference = coll.gameObject;
+            Debug.Log("item " + repairObject);
         }
 /*        if (coll.gameObject.tag.Equals("Player")) {
             OnPickUpEvent.Invoke(itemID);
@@ -122,5 +136,18 @@ public class PlayerMovement : MonoBehaviour
         //e.transform.position = transform.position;
         //Destroy (other.gameObject);
         //this.gameObject.SetActive(false);/**/
+    }
+
+    EnumPickUpType.PickUpType npcItemMatch (string npcName) {
+        return (EnumPickUpType.PickUpType) int.Parse(npcName.Substring(3)) - 1;
+    }
+
+    void updateCollision() {
+        float deltaX = Math.Abs(player.transform.position.x - collidedNPCReference.transform.position.x);
+        float deltaY = Math.Abs(player.transform.position.y - collidedNPCReference.transform.position.y);
+        if (deltaX > 1.5 || deltaY > 1) {
+            Debug.Log("end collision " + collidedNPCReference);
+            collidedNPCReference = null;
+        }
     }
 }

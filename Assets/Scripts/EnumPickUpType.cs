@@ -4,8 +4,9 @@ using UnityEngine;
 
 
 public static class EnumPickUpType {
-    public enum PickUpType : uint
+    public enum PickUpType : int
         {
+            NULL = -1,
             Eye = 0,
             Head = 1,
             Leg = 2,

@@ -17,9 +17,10 @@ public abstract class Item {
         }
     }
 
-    public void give() {
+    public void repair() {
         if (collected) {
             collected = false;
+            Debug.Log("repaired " + this.GetType());
         }
     }
 }
@@ -64,7 +65,7 @@ public class Inventory2 : MonoBehaviour {
     public void collect(EnumPickUpType.PickUpType p) {
         items[(int) p].collect();
     }
-    public void give() {
-        
+    public void repair(EnumPickUpType.PickUpType p) {
+        items[(int) p].repair();
     }
 }

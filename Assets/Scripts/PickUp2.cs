@@ -4,18 +4,10 @@ using UnityEngine;
 
 public class PickUp2 : MonoBehaviour {
 
-    /*public enum PickUpType : uint
-    {
-        Eye = 0,
-        Head = 1,
-        Leg = 2,
-        OS = 3
-    }
-*/
     void OnCollisionEnter2D(Collision2D coll) {
         if (coll.gameObject.tag.Equals("Player")) {
             //OnPickUpEvent.Invoke(itemID);
-            var inventory = coll.gameObject.GetComponent<Inventory2>();
+            var inventory = coll.gameObject.GetComponent<Inventory>();
             if (this.gameObject.name == "Eye") {
                 inventory.collect(EnumPickUpType.PickUpType.Eye);
             }
@@ -31,10 +23,6 @@ public class PickUp2 : MonoBehaviour {
             Destroy(this.gameObject);
             this.gameObject.SetActive(false);
         }
-        //GameObject e = Instantiate(<azione desiderata>) as GameObject;
-        //e.transform.position = transform.position;
-        //Destroy (other.gameObject);
-        //this.gameObject.SetActive(false);
     }
 
 }
