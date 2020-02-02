@@ -93,6 +93,7 @@ public class Parallax : MonoBehaviour
         // Update the (temporary) camera position if we're following the player
         if (followPlayer) {
             newCameraPosition.x = followPlayer.transform.position.x;
+            newCameraPosition.y = followPlayer.transform.position.y;
         }
         foreach(GameObject obj in backgrounds) {
             RepositionBackgroundPlane(obj);
