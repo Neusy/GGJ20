@@ -1547,7 +1547,7 @@ TextMesh:
   m_GameObject: {fileID: 130548960}
   m_Text: 
   m_OffsetZ: 0
-  m_CharacterSize: 0.1
+  m_CharacterSize: 0.15
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
@@ -1613,7 +1613,7 @@ MonoBehaviour:
   dialogueText: {fileID: 0}
   textToAnimate: 
   textProximiti: 10010 PL15 F1X M3...
-  textToAnimateOnEvent: Test
+  textEvent: 1001.. 7H3NK5!  :D
   speedText: 0.2
   distance: 5
   ob1: {fileID: 1958515470}

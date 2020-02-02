@@ -50,12 +50,11 @@ public class TextWriterNPC : MonoBehaviour
             AnimateDialogueBox(textProximiti);
             ProximitiEvent = true;
         }
-        if (true) {
+        if (status != null) {
             if ((onEvent == false) && (status.isRepaied() == true))
             {
                 AnimateDialogueBox(textEvent);
                 onEvent = true;
-                Debug.Log("Noooooo");
             }
         }
     }
