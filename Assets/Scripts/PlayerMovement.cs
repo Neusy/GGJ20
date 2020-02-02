@@ -26,14 +26,14 @@ public class PlayerMovement : MonoBehaviour
     int jump = 0;
     bool crouch = false;
     Vector3 spawn;
-    Inventory2 inventory;
+    Inventory inventory;
     EnumPickUpType.PickUpType repairObject = EnumPickUpType.PickUpType.NULL;
     GameObject collidedNPCReference = null;
 
     void Awake()
     {
         player = GameObject.Find("Player");
-        inventory = GetComponent<Inventory2>();
+        inventory = GetComponent<Inventory>();
     }
 
     void Update()
@@ -79,11 +79,15 @@ public class PlayerMovement : MonoBehaviour
             inventory.use(EnumPickUpType.PickUpType.OS);
         }
         if (Input.GetButtonDown("Repair")) {
-            if (collidedNPCReference) {
-                inventory.repair(npcItemMatch(collidedNPCReference.name));
+            if (!collidedNPCReference) {
+                Debug.Log("can't repair " + repairObject);
+            } else {
+                /*var item = npcItemMatch(collidedNPCReference.name);
+                Debug.Log(item);
+                inventory.repair(item);*/
+                inventory.repair(repairObject, collidedNPCReference);
                 Debug.Log("repairing " + repairObject);
             }
-            Debug.Log("can't repair " + repairObject);
             // repair dovrebbe funzionare in base alla distanza dal player da un npc al quale viene dato in automatico l'oggetto mancante
         }
         /*if (Input.GetButtonDown("Give")) {
@@ -153,6 +157,7 @@ public class PlayerMovement : MonoBehaviour
         if (deltaX > 1.5 || deltaY > 1) {
             Debug.Log("end collision " + collidedNPCReference);
             collidedNPCReference = null;
+            repairObject = EnumPickUpType.PickUpType.NULL;
         }
     }
 }
