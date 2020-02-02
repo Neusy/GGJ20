@@ -1611,7 +1611,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 0}
-  speedText: 0.2
+  textToAnimate: 1001020 PL15 F1X M3...
+  speedText: 0.1
 --- !u!1 &176644896
 GameObject:
   m_ObjectHideFlags: 0
@@ -3287,7 +3288,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: asdasd
 --- !u!222 &1958515479
 CanvasRenderer:
   m_ObjectHideFlags: 0
