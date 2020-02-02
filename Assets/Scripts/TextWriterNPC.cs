@@ -39,7 +39,7 @@ public class TextWriterNPC : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
-            speedText = 0.05f;
+            speedText = 0.2f;
         }
         if ((ProximitiEvent == false) && (Vector3.Distance(ob1.transform.position, ob2.transform.position) < distance))
         {
