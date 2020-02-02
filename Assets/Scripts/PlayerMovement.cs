@@ -7,11 +7,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public GameObject player;
+    private GameObject player;
     public CharacterController2D controller;
     public Animator animator;
-    public AudioSource footstep;
+    public AudioSource footstepSource;
+    public AudioClip[] footsteps;
     public float runSpeed = 20f;
+    private System.Random rnd;
 
     float horizontalMove = 0f;
     int jump = 0;
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        rnd = new System.Random();
         player = GameObject.Find("Player");
         inventory = GetComponent<Inventory>();
     }
@@ -79,23 +82,27 @@ public class PlayerMovement : MonoBehaviour
             jump = 2;
         }
     }
+    private void PlayFootsteps() {
+        Debug.Log("footstep");
+        if (!footstepSource || footstepSource.isPlaying)
+            return;
+        
+        footstepSource.clip = footsteps[rnd.Next(footsteps.Length)];
+        footstepSource.Play();
+    }
 
     public void OnLanding() {
         spawn = transform.position;
         animator.SetBool("Jumping", false);
-        if (footstep)
-            footstep.Play();
+        PlayFootsteps();
     }
 
     public void OnCrouching(bool isCrouching) {
         animator.SetBool("Crouching", isCrouching);
     }
 
-    // Sound callback to be triggered inside the animation
-    public void STFootstep(int step) {
-        // -1 Left, 1 Right
-        if (footstep)
-            footstep.Play();
+    public void STFootstep() {
+        PlayFootsteps();
     }
 
     void OnCollisionEnter2D(Collision2D coll) {
