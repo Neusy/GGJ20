@@ -13,12 +13,11 @@ public class TextWriter : MonoBehaviour
     public float speedText = 0.05f;
 
     //Only used in the example below, otherwise you can remove this.
-    private string stringToAnimate = "10100010... Pl15 F1x m3 01001...";
 
     void Start()
     {
-        //Example #1
-        AnimateDialogueBox(stringToAnimate);
+
+        AnimateDialogueBox(dialogueText.text);
     }
 
     void Update()

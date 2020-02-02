@@ -82,8 +82,8 @@ public class PlayerMovement : MonoBehaviour
             jump = 2;
         }
     }
+
     private void PlayFootsteps() {
-        Debug.Log("footstep");
         if (!footstepSource || footstepSource.isPlaying)
             return;
         

@@ -1413,7 +1413,7 @@ MonoBehaviour:
   dialogueText: {fileID: 0}
   textToAnimate: 
   textProximity: 10010 P1z F!X...
-  textEvent: 1001... 7H4NK5!  :D
+  textEventRepaired: 1010 7h3nk5! :D
   speedText: 0.1
   distance: 5
   ob1: {fileID: 1958515470}
@@ -8649,7 +8649,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1748863315}
         m_MethodName: OnCrouching
-        m_Mode: 6
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
