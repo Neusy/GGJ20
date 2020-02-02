@@ -1517,7 +1517,7 @@ GameObject:
   - component: {fileID: 130548962}
   - component: {fileID: 130548964}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Dialogues
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1531,7 +1531,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130548960}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.595, y: 0.89747334, z: -2.8945312}
+  m_LocalPosition: {x: 0.01, y: 0.68, z: -2.8945312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1958515471}
@@ -1549,8 +1549,8 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 0.15
   m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
+  m_Anchor: 7
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 0
   m_FontStyle: 0
@@ -1612,9 +1612,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 0}
   textToAnimate: 
-  textProximiti: 10010 PL15 F1X M3...
-  textEvent: 1001.. 7H3NK5!  :D
-  speedText: 0.2
+  textProximity: 10010 P1z F!X...
+  textEvent: 1001... 7H4NK5!  :D
+  speedText: 0.1
   distance: 5
   ob1: {fileID: 1958515470}
   ob2: {fileID: 1748863308}

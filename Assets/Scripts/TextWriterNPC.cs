@@ -11,7 +11,7 @@ public class TextWriterNPC : MonoBehaviour
     public Text dialogueText;
 
     public string textToAnimate;
-    public string textProximiti;
+    public string textProximity;
     public string textEvent;
 
     //The Speed the text is animated on screen. Waits 0.05 seconds before animating the next character.
@@ -47,7 +47,7 @@ public class TextWriterNPC : MonoBehaviour
         }
         if ((ProximitiEvent == false) && (Vector3.Distance(ob1.transform.position, ob2.transform.position) < distance))
         {
-            AnimateDialogueBox(textProximiti);
+            AnimateDialogueBox(textProximity);
             ProximitiEvent = true;
         }
         if (status != null) {
