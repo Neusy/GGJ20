@@ -12,7 +12,7 @@ public class NPCStatus : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (transform.position.y < -10) {
+        if (transform.position.y < -40) {
             dead = true;
             Debug.Log("#rip" + this.gameObject.name);
             this.gameObject.SetActive(false);
