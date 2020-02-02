@@ -19,6 +19,14 @@ public class SceneSwitcher : MonoBehaviour
     {
         SceneManager.LoadScene("MainLevel");
     }
+    public void GoToMainCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+    public void GoToControls()
+    {
+        SceneManager.LoadScene("Controls");
+    }
 
     public void quit()
     {

@@ -10,7 +10,7 @@ public class TextWriter : MonoBehaviour
 
     //The Speed the text is animated on screen. Waits 0.05 seconds before animating the next character.
     //Useful for letting the player accelerate the speed animation.
-    public float speedText = 0.05f;
+    public float speedText = 0.1f;
 
     //Only used in the example below, otherwise you can remove this.
 
