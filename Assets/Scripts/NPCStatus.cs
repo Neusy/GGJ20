@@ -5,6 +5,11 @@ using UnityEngine.Events;
 public class NPCStatus : MonoBehaviour {
     private bool repaired = false;
     private bool dead = false;
+    private Animator animator;
+
+    void Awake() {
+        animator = this.gameObject.GetComponent<Animator>();
+    }
 
     void FixedUpdate() {
         if (transform.position.y < -10) {
@@ -17,5 +22,6 @@ public class NPCStatus : MonoBehaviour {
     public void OnRepair() {
         Debug.Log("Repaired " + this.gameObject.name);
         repaired = true;
+        animator.SetBool("fixed", true);
     }
 }
