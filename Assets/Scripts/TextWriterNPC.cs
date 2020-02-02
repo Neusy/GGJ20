@@ -12,7 +12,7 @@ public class TextWriterNPC : MonoBehaviour
 
     public string textToAnimate;
     public string textProximity;
-    public string textEvent;
+    public string textEventRepaired;
 
     //The Speed the text is animated on screen. Waits 0.05 seconds before animating the next character.
     //Useful for letting the player accelerate the speed animation.
