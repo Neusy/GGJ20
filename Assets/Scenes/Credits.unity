@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 73437569}
-  speedText: 0.05
+  speedText: 0.1
 --- !u!114 &73437569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,10 +193,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9e52c5eb77070d146a48a86f5bee5ea8, type: 3}
-    m_FontSize: 14
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -204,7 +204,24 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "Credits\r\nBruno \"Varstahl\" Passeri - Coding, Writing, Level Design
+    And Animation\r\nBernardo \"Boh_Zinga\" Papa - Coding, Writing And Testing\r\nGreta
+    \"GretaA7X\" Antenucci - Coding,Debugging  And Writing\r\nAntonia \"Luddachan\"
+    Guerra - Drawing, Pixel Art And Animation\r\nMichal \"Neusy\" Cesnek - Coding
+    And Level Design\r\nFernando \"Jasias\" Nobile - Writing,Debugging And Testing
+    \r\nAlessandro \"Akatsune\" De Falco - Animation, Level Design And Pixel Art\r\nGiulio
+    Francesco \"The Zemi Rider\" Zemignani - Level Design And Coding\r\nSalvatore
+    \"K\u016Bhaku\" Capizzi - Sound Director And Music\r\nAlessio \"Zahard\" Di Rubbo
+    - Writing, Coding And Level Design\r\nVittorio \"Wittorio\" Perozzi Writing And
+    Animation\r\nLorenzo \"Rory Morgenstern\" Di Salvo Writing, Sound And General
+    Design\r\n\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n\r\n01010011 01100011
+    01100101 01101101 01101111 00100000 01100011 \r\n01101000 01101001 00100000 01101100
+    01100101 01100111 01100111 01100101 \r\n00100000 00111100 00110011\r\n\r\n\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n01001001
+    01100110 00100000 01111001 01101111 01110101 \r\n00100111 01110010 01100101 00100000
+    01110010 01100101 \r\n01100001 01100100 01101001 01101110 01100111 00100000 \r\n01110100
+    01101000 01101001 01110011 00100000 01111001 \r\n01101111 01110101 00100111 01110010
+    01100101 00100000 \r\n01110011 01110100 01110101 01110000 01101001 01100100 \r\n00100000
+    00111100 00110011\r\n"
 --- !u!222 &73437570
 CanvasRenderer:
   m_ObjectHideFlags: 0

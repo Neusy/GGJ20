@@ -7,7 +7,6 @@ public class TextWriter : MonoBehaviour
 
     //Give access to the text component.
     public Text dialogueText;
-    public string TextToAnimate;
 
     //The Speed the text is animated on screen. Waits 0.05 seconds before animating the next character.
     //Useful for letting the player accelerate the speed animation.
@@ -17,7 +16,8 @@ public class TextWriter : MonoBehaviour
 
     void Start()
     {
-        AnimateDialogueBox(TextToAnimate);
+
+        AnimateDialogueBox(dialogueText.text);
     }
 
     void Update()
