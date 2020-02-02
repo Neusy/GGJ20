@@ -7,6 +7,7 @@ public abstract class Item {
     protected bool used = false;
 
     public void collect() {
+        Debug.Log("collected " + this.GetType());
         collected = true;
     } 
 
@@ -25,11 +26,14 @@ public abstract class Item {
         }
     }
 
-    public void repair() {
+    public bool repair() {
         if (collected && !used) {
             used = true;
             Debug.Log("repaired " + this.GetType());
+            return true;
         }
+        Debug.Log("can't repair " + this.GetType());
+        return false;
     }
 }
 
@@ -61,8 +65,8 @@ public class Inventory : MonoBehaviour {
 
     void Awake() {
         items.Add(new Eye());
-        items.Add(new Head());
         items.Add(new Leg());
+        items.Add(new Head());
         items.Add(new OS());
     }
 
@@ -74,7 +78,7 @@ public class Inventory : MonoBehaviour {
         items[(int) p].collect();
     }
     public void repair(EnumPickUpType.PickUpType p, GameObject npc) {
-        items[(int) p].repair();
-        npc.GetComponent<NPCStatus>().OnRepair();
+        if (items[(int) p].repair())
+            npc.GetComponent<NPCStatus>().OnRepair();
     }
 }
