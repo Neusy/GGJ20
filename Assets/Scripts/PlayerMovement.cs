@@ -13,11 +13,13 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource footstepSource;
     public AudioClip[] footsteps;
     public float runSpeed = 20f;
+    public float sprintModifier = 60;
     private System.Random rnd;
 
     float horizontalMove = 0f;
     int jump = 0;
     bool crouch = false;
+    bool sprint = false;
     Vector3 spawn;
     Inventory inventory;
     GameObject collidedNPCReference = null;
@@ -67,11 +69,20 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Repair") && collidedNPCReference) {
             inventory.repair(npcItemMatch(collidedNPCReference.name), collidedNPCReference);
         }
+        if (!sprint && Input.GetButtonDown("Sprint")) {
+            sprint = true;
+        } else if (Input.GetButtonUp("Sprint")) {
+            sprint = false;
+        }
     }
 
     void FixedUpdate()
     {
         // Basic movement
+        if (sprint) {
+            horizontalMove *= sprintModifier;
+        }
+
         controller.Move(Time.fixedDeltaTime, horizontalMove, crouch, jump);
 
         if (collidedNPCReference)

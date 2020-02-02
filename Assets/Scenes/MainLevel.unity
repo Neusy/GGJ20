@@ -7722,7 +7722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5192b5e2ba102849afc63f977f6e1b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 6
+  m_JumpForce: 6.5
   m_DownGravityMultiplier: 1.5
   m_LowJumpMultiplier: 2
   m_CrouchSpeed: 0.36
@@ -7835,6 +7835,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 93ac5048e4bc61f4b82286783e982de3, type: 3}
   - {fileID: 8300000, guid: c202fb052041261478736422e83a43b1, type: 3}
   runSpeed: 20
+  sprintModifier: 2
 --- !u!95 &1748863316
 Animator:
   serializedVersion: 3
