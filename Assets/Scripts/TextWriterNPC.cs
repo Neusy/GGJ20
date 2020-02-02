@@ -77,7 +77,7 @@ public class TextWriterNPC : MonoBehaviour
             //Wait before animating next character in scenarioText.
             yield return new WaitForSeconds(speedText);
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         //dialogueText.text = "";
         textMeshComponent.text = "";
         Debug.Log("Done animating!");
