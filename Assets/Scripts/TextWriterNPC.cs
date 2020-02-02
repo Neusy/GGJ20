@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 
+
+
 public class TextWriterNPC : MonoBehaviour
 {
 
@@ -9,15 +11,23 @@ public class TextWriterNPC : MonoBehaviour
     public Text dialogueText;
 
     public string textToAnimate;
+    public string textProximiti;
+    public string textToAnimateOnEvent;
 
     //The Speed the text is animated on screen. Waits 0.05 seconds before animating the next character.
     //Useful for letting the player accelerate the speed animation.
     public float speedText = 0.05f;
 
+    private bool playerCloseEnough = false;
+    private bool ProximitiEvent = false;
+
+    public int distance;
+
+    public GameObject ob1;
+    public GameObject ob2;
 
     void Start()
     {
-        AnimateDialogueBox(textToAnimate);
     }
 
     void Update()
@@ -30,6 +40,11 @@ public class TextWriterNPC : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Space))
         {
             speedText = 0.05f;
+        }
+        if ((ProximitiEvent == false) && (Vector3.Distance(ob1.transform.position, ob2.transform.position) < distance))
+        {
+            AnimateDialogueBox(textProximiti);
+            ProximitiEvent = true;
         }
     }
 
