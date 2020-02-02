@@ -2253,7 +2253,7 @@ GameObject:
   - component: {fileID: 1229642890}
   - component: {fileID: 1229642891}
   - component: {fileID: 1229642892}
-  - component: {fileID: 1229642893}
+  - component: {fileID: 1229642895}
   - component: {fileID: 1229642894}
   m_Layer: 0
   m_Name: OS
@@ -2346,33 +2346,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1229642893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229642889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc11a713c397bec4eb8df4de86c48381, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemID: 8
-  OnPickUpEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1748863317}
-        m_MethodName: OnCollectiblePickUp
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!61 &1229642894
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2399,6 +2372,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.23863956, y: 0.5752122}
   m_EdgeRadius: 0
+--- !u!114 &1229642895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229642889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab88f6b6b8659647a0de08fb650420f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1427129200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2564,7 +2549,7 @@ GameObject:
   - component: {fileID: 1476398765}
   - component: {fileID: 1476398766}
   - component: {fileID: 1476398767}
-  - component: {fileID: 1476398768}
+  - component: {fileID: 1476398770}
   - component: {fileID: 1476398769}
   m_Layer: 0
   m_Name: Head
@@ -2657,33 +2642,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1476398768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476398764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc11a713c397bec4eb8df4de86c48381, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemID: 4
-  OnPickUpEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1748863317}
-        m_MethodName: OnCollectiblePickUp
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!58 &1476398769
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2700,6 +2658,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.29823196
+--- !u!114 &1476398770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476398764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab88f6b6b8659647a0de08fb650420f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1493504335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2711,7 +2681,7 @@ GameObject:
   - component: {fileID: 1493504336}
   - component: {fileID: 1493504337}
   - component: {fileID: 1493504339}
-  - component: {fileID: 1493504338}
+  - component: {fileID: 1493504341}
   - component: {fileID: 1493504340}
   m_Layer: 0
   m_Name: Leg
@@ -2785,33 +2755,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1493504338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1493504335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc11a713c397bec4eb8df4de86c48381, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemID: 2
-  OnPickUpEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1748863317}
-        m_MethodName: OnCollectiblePickUp
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!95 &1493504339
 Animator:
   serializedVersion: 3
@@ -2857,6 +2800,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.66693926, y: 0.37287948}
   m_EdgeRadius: 0
+--- !u!114 &1493504341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493504335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab88f6b6b8659647a0de08fb650420f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1499330361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,7 +2862,7 @@ GameObject:
   - component: {fileID: 1748863316}
   - component: {fileID: 1748863313}
   - component: {fileID: 1748863315}
-  - component: {fileID: 1748863317}
+  - component: {fileID: 1748863318}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3133,7 +3088,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1748863317
+--- !u!114 &1748863318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3142,7 +3097,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1748863308}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd75c0717d85add49bcf4123968ce41d, type: 3}
+  m_Script: {fileID: 11500000, guid: ddc70c024ef6c7f44bfe858f460a7e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1958515470
@@ -3520,7 +3475,7 @@ GameObject:
   - component: {fileID: 2034359337}
   - component: {fileID: 2034359338}
   - component: {fileID: 2034359339}
-  - component: {fileID: 2034359340}
+  - component: {fileID: 2034359342}
   - component: {fileID: 2034359341}
   m_Layer: 0
   m_Name: Eye
@@ -3613,33 +3568,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2034359340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2034359336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc11a713c397bec4eb8df4de86c48381, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemID: 1
-  OnPickUpEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1748863317}
-        m_MethodName: OnCollectiblePickUp
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!58 &2034359341
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3656,6 +3584,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.02}
   serializedVersion: 2
   m_Radius: 0.21
+--- !u!114 &2034359342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034359336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab88f6b6b8659647a0de08fb650420f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2057653609
 GameObject:
   m_ObjectHideFlags: 0

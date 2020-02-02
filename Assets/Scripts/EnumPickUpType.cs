@@ -8,8 +8,8 @@ public static class EnumPickUpType {
         {
             NULL = -1,
             Eye = 0,
-            Head = 1,
-            Leg = 2,
+            Leg = 1,
+            Head = 2,
             OS = 3
         }
 }

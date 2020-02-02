@@ -8,15 +8,6 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public GameObject player;
-
-    /*public enum PickUpType : uint
-    {
-        Eye = 0,
-        Head = 1,
-        Leg = 2,
-        OS = 3
-    }*/
-
     public CharacterController2D controller;
     public Animator animator;
     public AudioSource footstep;
@@ -26,25 +17,17 @@ public class PlayerMovement : MonoBehaviour
     int jump = 0;
     bool crouch = false;
     Vector3 spawn;
-    Inventory2 inventory;
-    EnumPickUpType.PickUpType repairObject = EnumPickUpType.PickUpType.NULL;
+    Inventory inventory;
     GameObject collidedNPCReference = null;
 
     void Awake()
     {
         player = GameObject.Find("Player");
-        inventory = GetComponent<Inventory2>();
+        inventory = GetComponent<Inventory>();
     }
 
     void Update()
     {
-        //colliding = false;
-        //repairObject =  EnumPickUpType.PickUpType.NULL;
-        if(collidedNPCReference) updateCollision();
-        
-        //inventory = player.GetComponent<Inventory2>();
-        //var inventory = player.GetComponent<Inventory>();
-
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
@@ -67,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
             transform.position = spawn;
 
         if (Input.GetButtonDown("UseEye")) {
-            inventory.use(EnumPickUpType.PickUpType.Eye); //bisogna inserirli come comandi
+            inventory.use(EnumPickUpType.PickUpType.Eye);
         }
         if (Input.GetButtonDown("UseHead")) {
             inventory.use(EnumPickUpType.PickUpType.Head);
@@ -78,24 +61,19 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("UseOS")) {
             inventory.use(EnumPickUpType.PickUpType.OS);
         }
-        if (Input.GetButtonDown("Repair")) {
-            if (collidedNPCReference) {
-                inventory.repair(npcItemMatch(collidedNPCReference.name));
-                Debug.Log("repairing " + repairObject);
-            }
-            Debug.Log("can't repair " + repairObject);
-            // repair dovrebbe funzionare in base alla distanza dal player da un npc al quale viene dato in automatico l'oggetto mancante
+        if (Input.GetButtonDown("Repair") && collidedNPCReference) {
+            inventory.repair(npcItemMatch(collidedNPCReference.name), collidedNPCReference);
         }
-        /*if (Input.GetButtonDown("Give")) {
-            inventory.give();
-            // give dovrebbe funzionare in base alla distanza dal player da un npc al quale viene dato in automatico l'oggetto mancante
-        }*/
     }
 
     void FixedUpdate()
     {
         // Basic movement
         controller.Move(Time.fixedDeltaTime, horizontalMove, crouch, jump);
+
+        if (collidedNPCReference)
+            updateCollision();
+
         if ((jump > 0) && (Input.GetButton("Jump"))) {
             // Jump button is still pressed
             jump = 2;
@@ -122,36 +100,19 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll) {
         if (Regex.IsMatch(coll.gameObject.name, "^NPC[0-9]$")) {
-            // Convert decimal NPC numbers in binary item flags
-            /*uint item = (uint)Math.Pow(2, uint.Parse(coll.gameObject.name.Substring(3)) - 1);
-            if (inventory.CarryingItem(item)) {
-                inventory.UseItem(item);
-                coll.gameObject.GetComponent<NPCStatus>().OnRepair();
-            }*/
-            //int item = int.Parse(coll.gameObject.name.Substring(3)) - 1;
-            repairObject = npcItemMatch(coll.gameObject.name);
+            Debug.Log("collision with NPC" + coll.gameObject.name.Substring(3));
             collidedNPCReference = coll.gameObject;
-            Debug.Log("item " + repairObject);
         }
-/*        if (coll.gameObject.tag.Equals("Player")) {
-            OnPickUpEvent.Invoke(itemID);
-            Destroy(this.gameObject);
-        }
-        //GameObject e = Instantiate(<azione desiderata>) as GameObject;
-        //e.transform.position = transform.position;
-        //Destroy (other.gameObject);
-        //this.gameObject.SetActive(false);/**/
     }
 
-    EnumPickUpType.PickUpType npcItemMatch (string npcName) {
+    EnumPickUpType.PickUpType npcItemMatch(string npcName) {
         return (EnumPickUpType.PickUpType) int.Parse(npcName.Substring(3)) - 1;
     }
 
     void updateCollision() {
         float deltaX = Math.Abs(player.transform.position.x - collidedNPCReference.transform.position.x);
         float deltaY = Math.Abs(player.transform.position.y - collidedNPCReference.transform.position.y);
-        if (deltaX > 1.5 || deltaY > 1) {
-            Debug.Log("end collision " + collidedNPCReference);
+        if (deltaX > 2 || deltaY > 2) {
             collidedNPCReference = null;
         }
     }
