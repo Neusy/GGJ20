@@ -30,13 +30,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        //inventory = GetComponent<Inventory>();
+        inventory = GetComponent<Inventory>();
         player = GameObject.Find("Player");
     }
 
     void Update()
     {
-        var inventory = player.GetComponent<Inventory2>();
+        //var inventory = player.GetComponent<Inventory>();
 
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (transform.position.y < -20)
             transform.position = spawn;
-
+        /*
         if (Input.GetButtonDown("Eye")) {
             inventory.use(EnumPickUpType.PickUpType.Eye); //bisogna inserirli come comandi
         }
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Give")) {
             inventory.give();
             // give dovrebbe funzionare in base alla distanza dal player da un npc al quale viene dato in automatico l'oggetto mancante
-        }
+        }*/
     }
 
     void FixedUpdate()
