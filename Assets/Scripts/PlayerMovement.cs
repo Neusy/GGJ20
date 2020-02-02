@@ -26,14 +26,14 @@ public class PlayerMovement : MonoBehaviour
     int jump = 0;
     bool crouch = false;
     Vector3 spawn;
-    Inventory inventory;
+    Inventory2 inventory;
     EnumPickUpType.PickUpType repairObject = EnumPickUpType.PickUpType.NULL;
     GameObject collidedNPCReference = null;
 
     void Awake()
     {
-        inventory = GetComponent<Inventory>();
         player = GameObject.Find("Player");
+        inventory = GetComponent<Inventory2>();
     }
 
     void Update()
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         //repairObject =  EnumPickUpType.PickUpType.NULL;
         if(collidedNPCReference) updateCollision();
         
-        inventory = player.GetComponent<Inventory2>();
+        //inventory = player.GetComponent<Inventory2>();
         //var inventory = player.GetComponent<Inventory>();
 
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
@@ -65,17 +65,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (transform.position.y < -20)
             transform.position = spawn;
-        /*
-        if (Input.GetButtonDown("Eye")) {
+
+        if (Input.GetButtonDown("UseEye")) {
             inventory.use(EnumPickUpType.PickUpType.Eye); //bisogna inserirli come comandi
         }
-        if (Input.GetButtonDown("Head")) {
+        if (Input.GetButtonDown("UseHead")) {
             inventory.use(EnumPickUpType.PickUpType.Head);
         }
-        if (Input.GetButtonDown("Leg")) {
+        if (Input.GetButtonDown("UseLeg")) {
             inventory.use(EnumPickUpType.PickUpType.Leg);
         }
-        if (Input.GetButtonDown("OS")) {
+        if (Input.GetButtonDown("UseOS")) {
             inventory.use(EnumPickUpType.PickUpType.OS);
         }
         if (Input.GetButtonDown("Repair")) {
@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("can't repair " + repairObject);
             // repair dovrebbe funzionare in base alla distanza dal player da un npc al quale viene dato in automatico l'oggetto mancante
         }
-        if (Input.GetButtonDown("Give")) {
+        /*if (Input.GetButtonDown("Give")) {
             inventory.give();
             // give dovrebbe funzionare in base alla distanza dal player da un npc al quale viene dato in automatico l'oggetto mancante
         }*/

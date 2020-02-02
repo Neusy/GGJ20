@@ -7,7 +7,7 @@ public class PickUp2 : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D coll) {
         if (coll.gameObject.tag.Equals("Player")) {
             //OnPickUpEvent.Invoke(itemID);
-            var inventory = coll.gameObject.GetComponent<Inventory>();
+            var inventory = coll.gameObject.GetComponent<Inventory2>();
             if (this.gameObject.name == "Eye") {
                 inventory.collect(EnumPickUpType.PickUpType.Eye);
             }
