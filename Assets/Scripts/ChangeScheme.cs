@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ChangeScheme : MonoBehaviour
 {
+    public int waitsTime;
+
     void Start()
     {
         StartCoroutine(Coroutine());
@@ -13,7 +15,7 @@ public class ChangeScheme : MonoBehaviour
     IEnumerator Coroutine()
     {
       
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(waitsTime);
         SceneManager.LoadScene("MainMenu");
     }
     void Upload()
