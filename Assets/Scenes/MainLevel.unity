@@ -1613,11 +1613,12 @@ MonoBehaviour:
   dialogueText: {fileID: 0}
   textToAnimate: 
   textProximiti: 10010 PL15 F1X M3...
-  textToAnimateOnEvent: 
+  textToAnimateOnEvent: Test
   speedText: 0.2
   distance: 5
   ob1: {fileID: 1958515470}
   ob2: {fileID: 1748863308}
+  obEvent: {fileID: 1958515470}
 --- !u!1 &176644896
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class TextWriterNPC : MonoBehaviour
 
     public string textToAnimate;
     public string textProximiti;
-    public string textToAnimateOnEvent;
+    public string textEvent;
 
     //The Speed the text is animated on screen. Waits 0.05 seconds before animating the next character.
     //Useful for letting the player accelerate the speed animation.
@@ -20,16 +20,20 @@ public class TextWriterNPC : MonoBehaviour
 
     private bool playerCloseEnough = false;
     private bool ProximitiEvent = false;
+    private bool onEvent = false;
+    private NPCStatus status;
 
     public int distance;
 
     public GameObject ob1;
     public GameObject ob2;
+    public GameObject obEvent;
 
-    void Start()
+    void Awake()
     {
+        status = this.obEvent.GetComponent<NPCStatus>();
     }
-
+    
     void Update()
     {
         //Simple controls to accelerate the text speed.
@@ -46,6 +50,14 @@ public class TextWriterNPC : MonoBehaviour
             AnimateDialogueBox(textProximiti);
             ProximitiEvent = true;
         }
+        if (true) {
+            if ((onEvent == false) && (status.isRepaied() == true))
+            {
+                AnimateDialogueBox(textEvent);
+                onEvent = true;
+                Debug.Log("Noooooo");
+            }
+        }
     }
 
     //Call this public function when you want to animate text. This should be used in your other scripts.
@@ -54,14 +66,10 @@ public class TextWriterNPC : MonoBehaviour
         StartCoroutine(AnimateTextCoroutine(text));
     }
 
-    /*Example #1*/
-    //Coroutine for animating the dialogue text. Loop over a string, adding a character to the dialogue text field one at a time.
     private IEnumerator AnimateTextCoroutine(string text)
     {
         TextMesh textMeshComponent = (TextMesh)GetComponent(typeof(TextMesh));
         textMeshComponent.text = "";
-        //Reset Dialogue Box.
-        //dialogueText.text = "";
         int i = 0;
 
         //Loop over the string.
@@ -69,7 +77,6 @@ public class TextWriterNPC : MonoBehaviour
         {
 
             //Add a character to the dialogue text field.
-            // dialogueText.text += text[i];
             textMeshComponent.text += text[i];
 
             i++;    //increment
@@ -78,7 +85,6 @@ public class TextWriterNPC : MonoBehaviour
             yield return new WaitForSeconds(speedText);
         }
         yield return new WaitForSeconds(5);
-        //dialogueText.text = "";
         textMeshComponent.text = "";
         Debug.Log("Done animating!");
     }

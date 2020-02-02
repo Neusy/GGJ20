@@ -24,4 +24,9 @@ public class NPCStatus : MonoBehaviour {
         repaired = true;
         animator.SetBool("fixed", true);
     }
+
+    public bool isRepaied()
+    {
+        return this.repaired;
+    }
 }
